@@ -3,7 +3,7 @@ BUCKET_NAME = "auto_ml_third_test_storage_20250529"
 GCSのバケット名
 """
 
-PREFIX = "test_training_image"
+PREFIX = "data_20250606_devil_number/images"
 """
 GCS内での学習データ格納ディレクトリ名
 """
