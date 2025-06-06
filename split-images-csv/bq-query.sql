@@ -21,6 +21,13 @@ FROM
     ) AS sub
 WHERE
     sub.rn_building_key = 1
-    AND sub.rn_total <= 250
+    AND (
+        CASE 
+            WHEN sub.label = '9' THEN sub.rn_total <= 3000   -- other
+            WHEN sub.label = '10' THEN sub.rn_total <= 2000  -- doorway
+            WHEN sub.label = '15' THEN sub.rn_total <= 2000  -- bathroom
+            ELSE sub.rn_total <= 1500   -- デフォルトは1500枚分のURLを収集
+        END
+    )
 ORDER BY
     sub.label, sub.building_key;

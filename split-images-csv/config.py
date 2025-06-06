@@ -24,7 +24,7 @@ ALL_FOLDER_NAMES = {
     None: 'unknown',
 }
 
-# ----- フォルダリストの振り分け ----- 
+# ----- フォルダリストの振り分け（増やしたり減らしたりできます） ----- 
 
 FOLDER_NAME_LIST_1 = {
     1: 'plan',

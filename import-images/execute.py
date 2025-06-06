@@ -69,7 +69,7 @@ def download_images_and_store(data, folder_names, image_extensions):
     BASE_PATH = 'import-images/images'
 
     for item in data:
-        type_label = int(item['type'])  # 明示的に整数型にキャスト
+        type_label = int(item['type'])
         urls = item['urls']
         folder_path = os.path.join(BASE_PATH, folder_names.get(type_label, 'unknown'))
 
@@ -81,17 +81,14 @@ def download_images_and_store(data, folder_names, image_extensions):
                 response = requests.get(url, stream=True)
                 response.raise_for_status()
 
-                # ファイル拡張子を決定
                 ext = os.path.splitext(url)[-1].lower()
                 if ext not in image_extensions:
-                    ext = '.jpg'  # デフォルト拡張子
+                    ext = '.jpg'
 
-                # ファイル名を生成
                 random_string = ''.join(random.choices(string.ascii_letters + string.digits, k=15))
-                file_name = f"{random_string}{ext}"  # ランダムな文字列を使用してファイル名を生成
+                file_name = f"{random_string}{ext}"
                 file_path = os.path.join(folder_path, file_name)
 
-                # 画像を保存
                 with open(file_path, 'wb') as file:
                     for chunk in response.iter_content(1024):
                         file.write(chunk)
