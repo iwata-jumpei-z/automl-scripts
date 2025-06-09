@@ -41,7 +41,7 @@ LABELS = [
 GCS内のフォルダ名リスト（=ラベルリスト）
 """
 
-OUTPUT_CSV = "generate-csv/training_dataset.csv"
+OUTPUT_CSV = "generate-dataset-csv/training_dataset.csv"
 """
 生成するCSVファイルの出力パス
 """
