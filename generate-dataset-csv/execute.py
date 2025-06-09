@@ -29,7 +29,7 @@ def generate_csv(output_csv, labels, prefix, bucket_name, max_images_per_label):
         for label in labels:
             folder_prefix = f"{prefix}/{label}/"
             print(f"Processing folder: {folder_prefix}")
-            blobs = bucket.list_blobs(prefix=prefix)
+            blobs = bucket.list_blobs(prefix=folder_prefix)
             gcs_paths = [
                 f"gs://{bucket_name}/{blob.name}"
                 for blob in blobs 
