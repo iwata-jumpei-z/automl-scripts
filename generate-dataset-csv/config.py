@@ -33,6 +33,9 @@ LABELS = [
     "unitbath",
     "view",
     "washroom", 
+    "window",
+    "shoe_shelf",
+    "picture",
 ]
 """
 GCS内のフォルダ名リスト（=ラベルリスト）
