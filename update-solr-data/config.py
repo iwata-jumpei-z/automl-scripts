@@ -31,6 +31,10 @@ LABEL_LIST = {
     'clean-living': None,
     'entryway': None,
     'noimage': None,
+    'picture': None,
+    'window': None,
+    'shoe_shelf': None,
+    'loft': None,
 }
 """
 AutoMLからのラベリング結果を、Solrに登録する際のラベル番号の変換辞書
