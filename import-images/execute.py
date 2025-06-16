@@ -1,7 +1,7 @@
 import os
 import random
 import string
-from config import CSV_FILE_PATH, FOLDER_NAMES, IMAGE_EXTENSIONS
+from config import CSV_FILE_PATH, FOLDER_NAMES, IMAGE_EXTENSIONS, BASE_PATH
 import csv
 from collections import defaultdict
 import requests
@@ -12,7 +12,8 @@ def main():
     BigQueryでクエリを叩き、その実行結果として得たCSVファイルを処理する
     """
     make_folders(
-        folder_name_array = FOLDER_NAMES.values()
+        folder_name_array = FOLDER_NAMES.values(),
+        base_path = BASE_PATH
     )
     data = load_csv_data(
         csv_file_path = CSV_FILE_PATH
@@ -20,22 +21,21 @@ def main():
     download_images_and_store(
         data = data,
         folder_names = FOLDER_NAMES,
-        image_extensions = IMAGE_EXTENSIONS
+        image_extensions = IMAGE_EXTENSIONS,
+        base_path = BASE_PATH
     )
 
 # ----- modules -----
 
-def make_folders(folder_name_array):
+def make_folders(folder_name_array, base_path):
     """
     config.pyからフォルダーリストを読み取り、特定のパスにフォルダを作成する。
     もし特定のパスが存在していれば別名を付けて作成する。
     """
-    BASE_PATH = 'import-images/images'
-
-    store_path = BASE_PATH
+    store_path = base_path
     while os.path.exists(store_path):
         random_suffix = ''.join(random.choices(string.ascii_letters + string.digits, k=3))
-        store_path = f"{BASE_PATH}_{random_suffix}"
+        store_path = f"{base_path}_{random_suffix}"
     os.makedirs(store_path)
     for folder_name in folder_name_array:
         os.makedirs(os.path.join(store_path, folder_name), exist_ok=True)
@@ -61,17 +61,15 @@ def load_csv_data(csv_file_path):
     return formatted_data
     
     
-def download_images_and_store(data, folder_names, image_extensions):
+def download_images_and_store(data, folder_names, image_extensions, base_path):
     """
     画像のダウンロードと画像種別ごとに保存
     """
-    
-    BASE_PATH = 'import-images/images'
 
     for item in data:
         type_label = int(item['type'])
         urls = item['urls']
-        folder_path = os.path.join(BASE_PATH, folder_names.get(type_label, 'unknown'))
+        folder_path = os.path.join(base_path, folder_names.get(type_label, 'unknown'))
 
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)

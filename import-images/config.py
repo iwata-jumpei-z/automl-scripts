@@ -1,6 +1,11 @@
-CSV_FILE_PATH = 'import-images/sample.csv'
+CSV_FILE_PATH = 'split-images-csv/original4.csv'
 """
 読み込むCSVファイルのパス
+"""
+
+BASE_PATH = 'import-images/images4'
+"""
+画像を保存するフォルダパス
 """
 
 FOLDER_NAMES = {
