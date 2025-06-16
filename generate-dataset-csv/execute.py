@@ -40,7 +40,15 @@ def generate_csv(output_csv, labels, prefix, bucket_name, max_images_per_label):
                 if "(" in gcs_path or ")" in gcs_path or re.search(r'[ぁ-んァ-ン一-龥]', gcs_path):
                     print(f"Skipping path: {gcs_path}")
                     continue
-                writer.writerow([gcs_path, label])
+                filename = gcs_path.split('/')[-1]
+                if filename.startswith("test-"):
+                    writer.writerow(["test", gcs_path, label])
+                elif filename.startswith("training-"):
+                    writer.writerow(["training", gcs_path, label])
+                elif filename.startswith("validation-"):
+                    writer.writerow(["validation", gcs_path, label])
+                else:
+                    writer.writerow([gcs_path, label])
     
     print(f"CSVファイルを生成しました: {output_csv}")
 
