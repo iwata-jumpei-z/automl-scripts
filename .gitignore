@@ -21,3 +21,11 @@ update-solr-data/**/*
 upload-images-to-gcs/**/*
 !upload-images-to-gcs/config.py
 !upload-images-to-gcs/execute.py
+
+import-images-from-gcs/**/*
+!import-images-from-gcs/config.py
+!import-images-from-gcs/execute.py
+
+move-all-files-in-gcs/**/*
+!move-all-files-in-gcs/config.py
+!move-all-files-in-gcs/execute.py
