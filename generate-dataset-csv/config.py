@@ -34,14 +34,14 @@ LABELS = [
     "view",
     "washroom", 
     "window",
-    "shoe_shelf",
+    "shoe-shelf",
     "picture",
 ]
 """
 GCS内のフォルダ名リスト（=ラベルリスト）
 """
 
-OUTPUT_CSV = "generate-dataset-csv/training_dataset.csv"
+OUTPUT_CSV = "generate-dataset-csv/training_dataset2.csv"
 """
 生成するCSVファイルの出力パス
 """

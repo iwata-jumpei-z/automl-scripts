@@ -33,7 +33,7 @@ LABEL_LIST = {
     'noimage': None,
     'picture': None,
     'window': None,
-    'shoe_shelf': None,
+    'shoe-shelf': None,
 }
 """
 AutoMLからのラベリング結果を、Solrに登録する際のラベル番号の変換辞書
