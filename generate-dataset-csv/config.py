@@ -1,9 +1,9 @@
-BUCKET_NAME = "auto_ml_third_test_storage_20250529"
+BUCKET_NAME = "automl-labeling-training-images"
 """
 GCSのバケット名
 """
 
-PREFIX = "data_20250606_devil_number/images"
+PREFIX = "general"
 """
 GCS内での学習データ格納ディレクトリ名
 """
@@ -36,12 +36,17 @@ LABELS = [
     "window",
     "shoe-shelf",
     "picture",
+    "air-conditioner",
+    "delivery-box",
+    "elevator",
+    "self-locking-door",
+    "underfloor-storage",
 ]
 """
 GCS内のフォルダ名リスト（=ラベルリスト）
 """
 
-OUTPUT_CSV = "generate-dataset-csv/training_dataset2.csv"
+OUTPUT_CSV = "generate-dataset-csv/training_dataset3.csv"
 """
 生成するCSVファイルの出力パス
 """
